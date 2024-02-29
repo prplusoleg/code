@@ -5,11 +5,11 @@ $(document).ready(function() {
 
     var currentHour = (new Date().getUTCHours() + 3); // Проверка часов для Украины
     var months = ["січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"];
-    var days = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
+    var days = ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
 
     if (currentHour >= 18) {
-        $(".textwebinar").text("завтра, " + tomorrow.getDate() + " " + months[tomorrow.getMonth()] + " у 19:00");
+        $(".textwebinar").text("Завтра, " + tomorrow.getDate() + " " + months[tomorrow.getMonth()] + " у 19:00");
     } else {
-        $(".textwebinar").text("сьогодні, " + today.getDate() + " " + months[today.getMonth()] + " у 19:00");
+        $(".textwebinar").text("Сьогодні, " + today.getDate() + " " + months[today.getMonth()] + " у 19:00");
     }
 });

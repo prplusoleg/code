@@ -28,8 +28,8 @@ Webflow.push(function() {
     formData += `&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}&utm_content=${utmContent}&utm_term=${utmTerm}`;
 
     // Adding form name to form data
-    const formName = $form.attr('data-name');
-    formData += `&formName=${formName}`;
+    const formDataName = $form.attr('data-name');
+    formData += `&formName=${formDataName}`;
 
     // Set waiting text
     if (buttonWaitingText) {

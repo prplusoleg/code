@@ -7,5 +7,5 @@ $(document).ready(function() {
 
     var formattedDate = tomorrow.getDate() + ' ' + months[tomorrow.getMonth()];
 
-    $(".tomorrow").text(formattedDate);
+    $(".date-tomorrow").text(formattedDate);
 });

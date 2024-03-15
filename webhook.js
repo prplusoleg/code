@@ -31,6 +31,10 @@ Webflow.push(function() {
     const formDataName = $form.attr('data-name');
     formData += `&formName=${formDataName}`;
 
+    // Adding current page URL to form data
+    const currentPageURL = window.location.href;
+    formData += `&pageURL=${currentPageURL}`;
+
     // Set waiting text
     if (buttonWaitingText) {
       $submit.val(buttonWaitingText); 

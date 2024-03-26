@@ -17,7 +17,8 @@ Webflow.push(function() {
     let formData = $form.serialize(); // Form data
 
     // Extracting UTM parameters from URL
-    const urlParams = new URLSearchParams(window.location.search);
+    const currentPageURL = window.location.href.split('?')[0]; // Get URL without parameters
+    const urlParams = new URLSearchParams(currentPageURL);
     const utmSource = urlParams.get('utm_source');
     const utmMedium = urlParams.get('utm_medium');
     const utmCampaign = urlParams.get('utm_campaign');
@@ -25,28 +26,13 @@ Webflow.push(function() {
     const utmTerm = urlParams.get('utm_term');
 
     // Adding UTM parameters to form data
-    if (utmSource) {
-      formData += `&utm_source=${utmSource}`;
-    }
-    if (utmMedium) {
-      formData += `&utm_medium=${utmMedium}`;
-    }
-    if (utmCampaign) {
-      formData += `&utm_campaign=${utmCampaign}`;
-    }
-    if (utmContent) {
-      formData += `&utm_content=${utmContent}`;
-    }
-    if (utmTerm) {
-      formData += `&utm_term=${utmTerm}`;
-    }
+    formData += `&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}&utm_content=${utmContent}&utm_term=${utmTerm}`;
 
     // Adding form name to form data
     const formDataName = $form.attr('data-name');
     formData += `&formName=${formDataName}`;
 
     // Adding current page URL to form data
-    const currentPageURL = window.location.href;
     formData += `&pageURL=${currentPageURL}`;
 
     // Set waiting text

@@ -35,6 +35,16 @@ Webflow.push(function() {
     // Adding current page URL to form data
     formData += `&pageURL=${currentPageURL}`;
 
+    // Extracting Google Analytics Client ID from cookie
+    const gaCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('_ga='));
+    let clientId = '';
+    if (gaCookie) {
+      clientId = gaCookie.split('.')[2] + '.' + gaCookie.split('.')[3];
+    }
+
+    // Adding Google Analytics Client ID to form data
+    formData += `&gaClientId=${clientId}`;
+
     // Set waiting text
     if (buttonWaitingText) {
       $submit.val(buttonWaitingText); 

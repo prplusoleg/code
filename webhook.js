@@ -17,13 +17,12 @@ Webflow.push(function() {
     let formData = $form.serialize(); // Form data
 
     // Extracting UTM parameters from URL
-    const currentPageURL = window.location.href.split('?')[0]; // Get URL without parameters
-    const urlParams = new URLSearchParams(currentPageURL);
-    const utmSource = urlParams.getAll('utm_source').filter((value, index, self) => self.indexOf(value) === index).join(',');
-    const utmMedium = urlParams.getAll('utm_medium').filter((value, index, self) => self.indexOf(value) === index).join(',');
-    const utmCampaign = urlParams.getAll('utm_campaign').filter((value, index, self) => self.indexOf(value) === index).join(',');
-    const utmContent = urlParams.getAll('utm_content').filter((value, index, self) => self.indexOf(value) === index).join(',');
-    const utmTerm = urlParams.getAll('utm_term').filter((value, index, self) => self.indexOf(value) === index).join(',');
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source') || '';
+    const utmMedium = urlParams.get('utm_medium') || '';
+    const utmCampaign = urlParams.get('utm_campaign') || '';
+    const utmContent = urlParams.get('utm_content') || '';
+    const utmTerm = urlParams.get('utm_term') || '';
 
     // Adding UTM parameters to form data
     formData += `&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}&utm_content=${utmContent}&utm_term=${utmTerm}`;
@@ -33,6 +32,7 @@ Webflow.push(function() {
     formData += `&formName=${formDataName}`;
 
     // Adding current page URL to form data
+    const currentPageURL = window.location.href.split('?')[0]; // Get URL without parameters
     formData += `&pageURL=${currentPageURL}`;
 
     // Extracting Google Analytics Client ID from cookie

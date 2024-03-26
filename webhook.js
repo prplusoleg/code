@@ -25,7 +25,21 @@ Webflow.push(function() {
     const utmTerm = urlParams.get('utm_term');
 
     // Adding UTM parameters to form data
-    formData += `&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}&utm_content=${utmContent}&utm_term=${utmTerm}`;
+    if (utmSource) {
+      formData += `&utm_source=${utmSource}`;
+    }
+    if (utmMedium) {
+      formData += `&utm_medium=${utmMedium}`;
+    }
+    if (utmCampaign) {
+      formData += `&utm_campaign=${utmCampaign}`;
+    }
+    if (utmContent) {
+      formData += `&utm_content=${utmContent}`;
+    }
+    if (utmTerm) {
+      formData += `&utm_term=${utmTerm}`;
+    }
 
     // Adding form name to form data
     const formDataName = $form.attr('data-name');

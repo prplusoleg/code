@@ -8,8 +8,8 @@ $(document).ready(function() {
     var days = ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
 
     if (currentHour >= 18) {
-        $(".textwebinar").text("Завтра, " + tomorrow.getDate() + " " + months[tomorrow.getMonth()] + " у 19:00");
+        $(".textwebinar").text("Завтра, " + tomorrow.getDate() + " " + months[tomorrow.getMonth()] + " о 19:00");
     } else {
-        $(".textwebinar").text("Сьогодні, " + today.getDate() + " " + months[today.getMonth()] + " у 19:00");
+        $(".textwebinar").text("Сьогодні, " + today.getDate() + " " + months[today.getMonth()] + " о 19:00");
     }
 });
